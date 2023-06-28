@@ -18,7 +18,6 @@ def enterToContinue():
 
 
 url = "https://api.nasa.gov/planetary/apod"
-api_key = "RH5e6AJeKi4RfZo11EoRbhCwlGspTA2Cdc6nZgoG"
 
 with open("params.json", 'r') as f:
     params = json.load(f)
