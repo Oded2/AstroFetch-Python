@@ -14,7 +14,7 @@ def check_file_exists(directory, filename):
 
 
 def enterToContinue():
-    input("Press ENTER to continue")
+    input("Press ENTER to continue ")
 
 
 url = "https://api.nasa.gov/planetary/apod"
