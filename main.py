@@ -1,6 +1,7 @@
-import requests
+
 import json
 import os
+
 
 
 def get_file_extension(file_path):
@@ -16,7 +17,12 @@ def check_file_exists(directory, filename):
 def enterToContinue():
     input("Press ENTER to continue ")
 
-
+try:
+    import requests
+except ModuleNotFoundError as error:
+    print(error, "Please run 'pip3 install requests` to install the requests module.")
+    enterToContinue()
+    exit()
 url = "https://api.nasa.gov/planetary/apod"
 
 with open("params.json", 'r') as f:
