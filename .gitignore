@@ -1,3 +1,4 @@
-images/.jpg
+images/*.jpg
+images/*.png
 .vscode/
 params.json
