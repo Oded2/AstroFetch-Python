@@ -25,19 +25,28 @@ except ModuleNotFoundError as error:
     exit()
 url = "https://api.nasa.gov/planetary/apod"
 
+print("Fetching data...")
+params_exist = check_file_exists("", "params.json")
+if not params_exist:
+    print("Please run the setup.py file in order to create the 'params.json' file")
+    enterToContinue()
+    exit()
 with open("params.json", 'r') as f:
     params = json.load(f)
 
 
-response = requests.get(url, params=params, timeout=30)
-
+response = requests.get(url, params=params, timeout=60)
 if not response.status_code == 200:
     if response.status_code == 403:
         print("Invalid API key, please visit https://api.nasa.gov/ and register for one")
+    elif response.status_code == 504:
+        print("Server did not get a response in time from the upstream server that it needed in order to complete the request.")
     else:
-        print("Error:", response.status_code)
+        print("Error:")
+    print("Status code:", response.status_code)
     enterToContinue()
     exit()
+
 data = response.json()
 for i in range(len(data)):
 
