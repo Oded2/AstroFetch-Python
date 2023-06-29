@@ -14,14 +14,14 @@ def check_file_exists(directory, filename):
 api_key = input("Enter your API key here ")
 
 with open("params.json", 'w') as f:
-    with open("settings.json", 'r') as j:
-        content = json.load(j)
-        content["thumbs"] = True
-        content["api_key"] = api_key
+    content = {}
+    content["thumbs"] = True
+    content["api_key"] = api_key
     json.dump(content, f, indent=6)
 
-if check_file_exists("images", "placeholder.txt"):
-    os.remove(os.path.join("images", "placeholder.txt"))
+
+if not os.path.isdir("images"):
+    os.mkdir("images")
 
 print("Setup finished")
 enterToContinue()

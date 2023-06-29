@@ -1,4 +1,4 @@
-images/*.jpg
-images/*.png
+images/*
 .vscode/
 params.json
+playground/

@@ -3,7 +3,6 @@ import json
 import os
 
 
-
 def get_file_extension(file_path):
     _, extension = os.path.splitext(file_path)
     return extension
@@ -16,6 +15,13 @@ def check_file_exists(directory, filename):
 
 def enterToContinue():
     input("Press ENTER to continue ")
+
+
+def appendJSON(json1, json2):
+    for i in json1:
+        json2[i] = json1[i]
+    return json2
+
 
 try:
     import requests
@@ -31,9 +37,15 @@ if not params_exist:
     print("Please run the setup.py file in order to create the 'params.json' file")
     enterToContinue()
     exit()
+
+with open("settings.json", 'r') as f:
+    settings = json.load(f)
+
 with open("params.json", 'r') as f:
+
     params = json.load(f)
 
+params = appendJSON(params, settings)
 
 response = requests.get(url, params=params, timeout=60)
 if not response.status_code == 200:
