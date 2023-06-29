@@ -14,7 +14,7 @@ This project allows you to download NASA's Astronomy Picture of the Day (APOD) i
    - "start_date": The start date of the range in the format "yyyy-mm-dd".
    - "end_date": The end date of the range in the format "yyyy-mm-dd".
 
-3. Run the `setup.py` script to setup your API key and the required parameters. This will create the `params.json` file, which is by ignored by git by default in order to keep API keys anonymous *You only have to run this script once.*
+3. Run the `setup.py` script to setup your API key and the required parameters. This will create the `params.json` file, which is by ignored by git by default in order to keep API keys anonymous. *You only have to run this script once.*
 4. Run the `main.py` script to initiate the image download process:
    The script will fetch the APOD image data for each date within the specified range and save the images in the `images` directory. If an image already exists with the same title, it will skip the download for that particular image.
 5. The downloaded images can be found in the `images` directory.
