@@ -23,6 +23,14 @@ def appendJSON(json1, json2):
     return json2
 
 
+def setupCheck():
+    params_exist = check_file_exists("", "params.json")
+    image_path_exist = os.path.isdir("images")
+    if params_exist and image_path_exist:
+        return True
+    return False
+
+
 try:
     import requests
 except ModuleNotFoundError as error:
@@ -32,9 +40,10 @@ except ModuleNotFoundError as error:
 url = "https://api.nasa.gov/planetary/apod"
 
 print("Fetching data...")
-params_exist = check_file_exists("", "params.json")
-if not params_exist:
-    print("Please run the setup.py file in order to create the 'params.json' file")
+
+
+if not setupCheck():
+    print("Please run the setup.py file in order to create the necessary files and directories.")
     enterToContinue()
     exit()
 
